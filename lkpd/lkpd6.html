@@ -3,26 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Date Input Form</title>
 </head>
 <body>
-    <form id="form-tanggal">
-        <label for="">Pilih Tanggal: </label>
-        <input type="tanggal" name="tanggal" id="input-tanggal" required>
-        <button type="submit">Kirim</button>
+    <form id="date-form">
+        <label for="input-tanggal">Pilih Tanggal : </label>
+        <input type="date" name="tanggal" id="input-tanggal" required>
+        <button type="kirim">Kirim</button>
     </form>
-    <p id="hasil">Tidak mencari data .....</p>
-    
+
+    <p id="hasil">Tidak mencari data ......</p> <!-- Untuk menampilkan hasil -->
+
     <script>
-        var form = document.getElementById('form-tanggal');
-        var inputTanggal= document/getElementById('input-tanggal');
-        var hasil= document.getElementById('hasil');
+        var form = document.getElementById('date-form');
+        var dateInput = document.getElementById('input-tanggal');
+        var result = document.getElementById('hasil');
 
         form.onsubmit = function(event) {
-            event.preventDefault();
+            event.preventDefault(); // Mencegah halaman refresh setelah submit
 
-            var dateValue= inputTanggal.value;
-        }
+            var dateValue = dateInput.value;
+
+            if (!dateValue) {
+                result.textContent = "Tidak mencari data";
+                return;
+            }
+
+            var selectedDate = new Date(dateValue);
+            var day = selectedDate.getDate();
+            var monthIndex = selectedDate.getMonth() + 1; // getMonth() dimulai dari 0
+            var year = selectedDate.getFullYear();
+
+            var bulan = "";
+
+            switch (monthIndex) {
+                case 1:
+                    bulan = "Januari";
+                    break;
+                case 2:
+                    bulan = "Februari";
+                    break;
+                case 3:
+                    bulan = "Maret";
+                    break;
+                case 4:
+                    bulan = "April";
+                    break;
+                case 5:
+                    bulan = "Mei";
+                    break;
+                case 6:
+                    bulan = "Juni";
+                    break;
+                case 7:
+                    bulan = "Juli";
+                    break;
+                case 8:
+                    bulan = "Agustus";
+                    break;
+                case 9:
+                    bulan = "September";
+                    break;
+                case 10:
+                    bulan = "Oktober";
+                    break;
+                case 11: 
+                    bulan = "November";
+                    break;
+                case 12:
+                    bulan = "Desember";
+                    break;
+                default:
+                    bulan = "Tidak diketahui";
+                    break;
+            }
+
+            var formattedDate = day + " " + bulan + " " + year;
+            result.textContent = "Mencarikan data tanggal " + formattedDate;
+        };
     </script>
 </body>
 </html>
