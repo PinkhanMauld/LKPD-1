@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No 4</title>
+    <style>
+      /* Trik untuk membuat gambar berbentuk segitiga */
+      .triangle {
+          clip-path: polygon(25% 0%, 0% 50%, 50% 50%);
+      }
+  </style>
+</head>
+<body>
+  <label for="image">Pilih gambar:</label>
+  <select id="image" name="select1">
+    <option value="bukit.jpg">Bukit</option>
+    <option value="gunung.jpg">Gunung</option>
+    <option value="laut.jpg">Laut</option>
+  </select>
+
+  <label for="border">Pilih border:</label>
+  <select id="border" name="border">
+      <option value="solid red">Red</option>
+      <option value="solid yellow">Yellow</option>
+      <option value="solid black">Black</option>
+  </select>
+
+  <label for="borderRadius">Pilih bentuk:</label>
+  <select name="borderRadius" id="borderRadius">
+      <option value="0%">Persegi</option>
+      <option value="50%">Lingkaran</option>
+      <option value="triangle">Segitiga</option> <!-- Opsi baru untuk segitiga -->
+  </select>
+
+  <button onclick="tampilkan()">Change</button> <!-- Menggunakan button biasa -->
+  
+  <br><br>
+  <img id="imageDisplay" src="bukit.jpg" alt="" style="border: solid red; width: 400px;">
+
+
+</body>
+      <script>
+        function tampilkan(){
+            let image = document.getElementById("image").value;
+            let border = document.getElementById("border").value;
+            let selectedShape = document.getElementById("borderRadius").value;
+            let imageDisplay = document.getElementById("imageDisplay");
+
+            // Debugging: Menampilkan value yang dipilih di console
+            console.log("Selected Image Path:", image);
+            console.log("Selected Border:", border);
+            console.log("Selected Shape:", selectedShape);
+
+            // Mengatur gambar yang dipilih
+            imageDisplay.src = image;
+
+            // Mengatur border style dan warna
+            let [borderStyle, borderColor] = border.split(" ");
+            imageDisplay.style.border = `${borderStyle} 4px ${borderColor}`;
+
+            // Mengatur bentuk gambar
+            if (selectedShape === "triangle") {
+                imageDisplay.classList.add("triangle");
+                imageDisplay.style.borderRadius = "0"; // Pastikan border-radius tidak digunakan
+            } else {
+                imageDisplay.classList.remove("triangle"); // Hapus kelas segitiga jika bukan segitiga
+                imageDisplay.style.borderRadius = selectedShape;
+            }
+        }
+        </script>
+</html>

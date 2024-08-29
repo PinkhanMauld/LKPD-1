@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form-tanggal">
+        <label for="">Pilih Tanggal: </label>
+        <input type="tanggal" name="tanggal" id="input-tanggal" required>
+        <button type="submit">Kirim</button>
+    </form>
+    <p id="hasil">Tidak mencari data .....</p>
+    
+    <script>
+        var form = document.getElementById('form-tanggal');
+        var inputTanggal= document/getElementById('input-tanggal');
+        var hasil= document.getElementById('hasil');
+
+        form.onsubmit = function(event) {
+            event.preventDefault();
+
+            var dateValue= inputTanggal.value;
+        }
+    </script>
+</body>
+</html>

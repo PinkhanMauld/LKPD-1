@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="daftar" class="daftar" id="daftar" onchange="changeLabel(this)">
+        <option disabled hidden selected>Ada perekomendasi?</option>
+        <option value="ada">Ada</option>
+        <option value="tidak">Tidak</option>
+    </select>
+    <div id="forms">
+    <div class="nameWrapper">
+    <div>
+        <label for="">Nama lengkap perekomendasi:</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="">Kategori perekomendasi:</label>
+       <select name="kategori" id="kategori" onchange="jabatan(this)">
+       <option value="bri">Pekerja BRI</option>
+       <option value="purnabakti">Purnabakti</option>
+    </select>
+    </div>
+    <div>
+        <label for="">Nomor ID Pegawai</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div id="jabatan">
+        <label for="">Jabatan perekomendasi:</label>
+        <input type="text" id="name" name="name">
+    </div>
+</div>
+</div>
+</form>
+<script>
+    function changeLabel(e) {
+        let nameWrapper = document.getElementById("forms");
+        if (e.value == "ada") {
+            nameWrapper.style.display = "block";
+        } else  {
+            nameWrapper.style.display = "none";
+        }
+    }
+
+    function jabatan(e) {
+        let nameWrapper = document.getElementById("jabatan");
+        if (e.value == "bri") {
+            nameWrapper.style.display = "block";
+        } else  {
+            nameWrapper.style.display = "none";
+        }
+    }
+
+    document.getElementById("forms").style.display= "none";
+</script>
+</body>
+</html>
